@@ -1,0 +1,39 @@
+package com.mike.M295_TrainTrack_Backend.exercises;
+
+import com.mike.M295_TrainTrack_Backend.base.MessageResponse;
+import com.mike.M295_TrainTrack_Backend.storage.EntityNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ExerciseService {
+    private final ExerciseRepository repository;
+
+    public ExerciseService(ExerciseRepository repository) {this.repository = repository;}
+
+    public List<Exercise> getExercise() {return repository.findByOrderByNameAsc();}
+
+    public Exercise getExercise(Long id){
+        return repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(id, Exercise.class));
+    }
+
+    public Exercise insertExercise(Exercise exercise) {
+        return repository.save(exercise);
+    }
+
+    public Exercise updateExercise(Exercise exercise, Long id){
+        return repository.findById(id)
+                .map(exerciseOrig -> {
+                    exerciseOrig.setName(exercise.getName());
+                    return repository.save(exerciseOrig);
+                })
+                .orElseGet(() -> repository.save(exercise));
+    }
+
+    public MessageResponse deleteExercise(Long id){
+        repository.deleteById(id);
+        return new MessageResponse("Exercise " + id + "deleted");
+    }
+}

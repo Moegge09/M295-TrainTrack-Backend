@@ -14,4 +14,6 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/ILV
+          issuer-uri: http://localhost:8080/realms/M295-TrainTrack-Backend
+app:
+  name: M295-TrainTrack-Backend
