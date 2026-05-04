@@ -1,0 +1,5 @@
+server.port: 6767
+
+spring:
+  application:
+    name: M295-TrainTrack-Backend
