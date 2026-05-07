@@ -1,5 +1,6 @@
-package com.mike.M295_TrainTrack_Backend.exercises;
+package com.mike.M295_TrainTrack_Backend.exercise;
 
+import com.mike.M295_TrainTrack_Backend.base.MessageResponse;
 import com.mike.M295_TrainTrack_Backend.security.Roles;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
@@ -36,9 +37,26 @@ public class ExerciseController {
     }
 
     @PostMapping("api/exercise")
-    @RolesAllowed(Roles.Admin)
+    @RolesAllowed(Roles.Update)
     public ResponseEntity<Exercise> newExercise(@Valid @RequestBody Exercise exercise) {
         Exercise savedExercise = exerciseService.insertExercise(exercise);
         return new ResponseEntity<>(savedExercise, HttpStatus.OK);
+    }
+
+    @PutMapping("api/exercise/{id}")
+    @RolesAllowed(Roles.Update)
+    public ResponseEntity<Exercise> updateExercise(@Valid @RequestBody Exercise exercise, @PathVariable Long id){
+        Exercise savedExercise = exerciseService.updateExercise(exercise, id);
+        return new ResponseEntity<>(savedExercise, HttpStatus.OK);
+    }
+
+    @DeleteMapping("api/exercise/{id}")
+    @RolesAllowed(Roles.Update)
+    public ResponseEntity<MessageResponse> deleteExercise(@PathVariable Long id){
+        try {
+            return ResponseEntity.ok(exerciseService.deleteExercise(id));
+        } catch (Throwable t){
+            return ResponseEntity.internalServerError().build();
+        }
     }
 }

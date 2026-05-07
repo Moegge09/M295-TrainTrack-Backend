@@ -1,7 +1,8 @@
-package com.mike.M295_TrainTrack_Backend.exercises;
+package com.mike.M295_TrainTrack_Backend.exercise;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -16,6 +17,10 @@ public class Exercise {
     @Size(max = 255)
     @NotEmpty
     private String name;
+
+    @Column(nullable = false)
+    @NotNull
+    private double weight;
 
     public Exercise() {
 

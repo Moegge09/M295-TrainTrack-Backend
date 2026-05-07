@@ -1,4 +1,4 @@
-package com.mike.M295_TrainTrack_Backend.exercises;
+package com.mike.M295_TrainTrack_Backend.exercise;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

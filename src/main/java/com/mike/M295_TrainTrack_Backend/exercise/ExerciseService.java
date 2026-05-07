@@ -1,4 +1,4 @@
-package com.mike.M295_TrainTrack_Backend.exercises;
+package com.mike.M295_TrainTrack_Backend.exercise;
 
 import com.mike.M295_TrainTrack_Backend.base.MessageResponse;
 import com.mike.M295_TrainTrack_Backend.storage.EntityNotFoundException;
@@ -27,6 +27,7 @@ public class ExerciseService {
         return repository.findById(id)
                 .map(exerciseOrig -> {
                     exerciseOrig.setName(exercise.getName());
+                    exerciseOrig.setWeight(exercise.getWeight());
                     return repository.save(exerciseOrig);
                 })
                 .orElseGet(() -> repository.save(exercise));
