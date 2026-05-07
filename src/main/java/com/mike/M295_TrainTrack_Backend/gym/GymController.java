@@ -36,21 +36,21 @@ public class GymController {
     }
 
     @PostMapping("api/gym")
-    @RolesAllowed(Roles.Update)
+    @RolesAllowed(Roles.Admin)
     public ResponseEntity<Gym> newGym(@Valid @RequestBody Gym gym){
         Gym savedGym = gymService.insertGym(gym);
         return new ResponseEntity<>(savedGym, HttpStatus.OK);
     }
 
     @PutMapping("api/gym/{id}")
-    @RolesAllowed(Roles.Update)
+    @RolesAllowed(Roles.Admin)
     public ResponseEntity<Gym> updateGym(@Valid @RequestBody Gym gym, @PathVariable Long id) {
         Gym savedGym = gymService.updateGym(gym, id);
         return new ResponseEntity<>(savedGym, HttpStatus.OK);
     }
 
     @DeleteMapping("api/gym/{id}")
-    @RolesAllowed(Roles.Update)
+    @RolesAllowed(Roles.Admin)
     public ResponseEntity<MessageResponse> deleteGym(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(gymService.deleteGym(id));

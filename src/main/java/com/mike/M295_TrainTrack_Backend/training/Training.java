@@ -19,6 +19,10 @@ public class Training {
     @NotEmpty
     private String name;
 
+    @Column(nullable = false)
+    @NotEmpty
+    private String day;
+
     @ManyToMany
     @JoinTable(name = "training_exercise",
         joinColumns = @JoinColumn(name = "training_id"),

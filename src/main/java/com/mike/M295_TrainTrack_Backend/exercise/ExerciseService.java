@@ -35,6 +35,6 @@ public class ExerciseService {
 
     public MessageResponse deleteExercise(Long id){
         repository.deleteById(id);
-        return new MessageResponse("Exercise " + id + "deleted");
+        return new MessageResponse("Exercise " + id + " deleted");
     }
 }

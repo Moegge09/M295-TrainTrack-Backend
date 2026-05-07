@@ -28,6 +28,7 @@ public class TrainingService {
                     trainingOrig.setName(training.getName());
                     trainingOrig.setExercises(training.getExercises());
                     trainingOrig.setGym(training.getGym());
+                    trainingOrig.setDay(training.getDay());
                     return repository.save(trainingOrig);
                 })
                 .orElseGet(() -> repository.save(training));

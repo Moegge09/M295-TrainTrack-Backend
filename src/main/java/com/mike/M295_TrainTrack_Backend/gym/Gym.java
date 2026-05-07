@@ -19,4 +19,8 @@ public class Gym {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
+
+    public Gym() {
+
+    }
 }
