@@ -20,7 +20,7 @@ public class Exercise {
 
     @Column(nullable = false)
     @NotNull
-    private double weight;
+    private Double weight;
 
     public Exercise() {
 

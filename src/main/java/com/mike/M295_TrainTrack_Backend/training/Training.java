@@ -30,7 +30,7 @@ public class Training {
     private Set<Exercise> exercises;
 
     @ManyToOne
-    @JoinTable(name = "gym_id")
+    @JoinColumn(name = "gym_id")
     private Gym gym;
 
     public Training() {

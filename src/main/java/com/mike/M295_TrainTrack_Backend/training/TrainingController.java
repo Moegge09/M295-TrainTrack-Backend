@@ -36,8 +36,8 @@ public class TrainingController {
 
     @PostMapping("api/training")
     @RolesAllowed(Roles.Update)
-    public ResponseEntity<Training> newTraining(@Valid @RequestBody Training training){
-        Training savedTraining = trainingService.insertTraining(training);
+    public ResponseEntity<Training> newTraining(@Valid @RequestBody TrainingRequestDTO dto) {
+        Training savedTraining = trainingService.insertTraining(dto);
         return new ResponseEntity<>(savedTraining, HttpStatus.OK);
     }
 

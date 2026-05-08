@@ -36,16 +36,14 @@ public class PlanController {
     }
 
     @PostMapping("api/plan")
-    @RolesAllowed(Roles.Update)
-    public ResponseEntity<Plan> newPlan(@Valid @RequestBody Plan plan) {
-        Plan savedPlan = planService.insertPlan(plan);
+    public ResponseEntity<Plan> newPlan(@Valid @RequestBody PlanRequestDTO dto) {
+        Plan savedPlan = planService.insertPlan(dto);
         return new ResponseEntity<>(savedPlan, HttpStatus.OK);
     }
 
     @PutMapping("api/plan/{id}")
-    @RolesAllowed(Roles.Update)
-    public ResponseEntity<Plan> updatePlan(@Valid @RequestBody Plan plan, @PathVariable Long id) {
-        Plan savedPlan = planService.updatePlan(plan, id);
+    public ResponseEntity<Plan> updatePlan(@RequestBody PlanRequestDTO dto, @PathVariable Long id) {
+        Plan savedPlan = planService.updatePlan(dto, id);
         return new ResponseEntity<>(savedPlan, HttpStatus.OK);
     }
 
