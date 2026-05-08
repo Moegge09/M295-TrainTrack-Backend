@@ -1,0 +1,8 @@
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/M295-TrainTrack-Backend
+    username: postgres
+    password: 123
+    driverClassName: org.postgresql.Driver
